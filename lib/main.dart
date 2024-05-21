@@ -33,7 +33,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PagingController<int, Users> pagingController =
-  PagingController(firstPageKey: 1);
+      PagingController(firstPageKey: 1);
 
   @override
   void initState() {
@@ -108,7 +108,8 @@ class _HomePageState extends State<HomePage> {
     final int offset = (pageKey - 1) * pageSize;
 
     try {
-      final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+      final response = await http
+          .get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
       if (response.statusCode == 200) {
         final data = usersFromJson(response.body);
         final newItems = data.skip(offset).take(pageSize).toList();
